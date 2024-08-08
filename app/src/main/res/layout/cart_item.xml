@@ -20,13 +20,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_width="347dp"
+            android:layout_height="103dp">
 
             <ImageView
-                android:id="@+id/cartimage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/cartImage"
+                android:layout_width="62dp"
+                android:layout_height="62dp"
+                android:layout_marginStart="16dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -37,13 +38,14 @@
                 android:id="@+id/cartFoodName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
                 android:text="TextView"
                 app:layout_constraintBottom_toTopOf="@+id/cartitemPrice"
-                app:layout_constraintStart_toEndOf="@+id/cartimage"
+                app:layout_constraintStart_toEndOf="@+id/cartImage"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/quantity"
+                android:id="@+id/catItemQuantity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -56,9 +58,10 @@
                 android:id="@+id/cartitemPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
                 android:text="TextView"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/cartimage"
+                app:layout_constraintStart_toEndOf="@+id/cartImage"
                 app:layout_constraintTop_toBottomOf="@+id/cartFoodName" />
 
             <ImageButton
@@ -70,15 +73,15 @@
                 android:background="@drawable/addtocart"
                 android:padding="2dp"
                 android:src="@drawable/icon_minus"
-                app:layout_constraintBottom_toBottomOf="@+id/quantity"
-                app:layout_constraintEnd_toStartOf="@+id/quantity"
-                app:layout_constraintTop_toTopOf="@+id/quantity" />
+                app:layout_constraintBottom_toBottomOf="@+id/catItemQuantity"
+                app:layout_constraintEnd_toStartOf="@+id/catItemQuantity"
+                app:layout_constraintTop_toTopOf="@+id/catItemQuantity" />
 
             <ImageButton
                 android:id="@+id/plusbutton"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/addtocart"
                 android:padding="2dp"
@@ -91,11 +94,11 @@
                 android:id="@+id/deleteButton"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:layout_marginTop="16dp"
                 android:background="@drawable/edittextshape"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/plusbutton"
                 app:layout_constraintStart_toStartOf="@+id/minusbutton"
-                app:layout_constraintTop_toBottomOf="@+id/plusbutton"
+                app:layout_constraintTop_toBottomOf="@+id/catItemQuantity"
                 app:srcCompat="@drawable/trash_03" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
