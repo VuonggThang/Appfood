@@ -36,9 +36,9 @@ class SearchFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
     }
-    private val filteredMenuFoodName = MutableListOf(String)
-    private val filteredMenuItemPrice = MutableListOf(String)
-    private val filteredMenuImage = MutableListOf(Int)
+    private val filteredMenuFoodName = mutableListOf<String>()
+    private val filteredMenuItemPrice = mutableListOf<String>()
+    private val filteredMenuImage = mutableListOf<Int>()
 
 
 
@@ -47,27 +47,45 @@ class SearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSearchBinding.inflate(inflater,container,false)
-        adapter = MenuAdapter(
-            filteredMenuFoodName,filteredMenuItemPrice,filteredMenuImage
-        )
+        adapter = MenuAdapter(filteredMenuFoodName,filteredMenuItemPrice,filteredMenuImage)
         binding.menuRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.menuRecyclerView.adapter = adapter
 
         //set up search view
         setupSearchView()
 
+        //Show All menusItems
+        showAllMenu()
         return binding.root
+    }
+
+    private fun showAllMenu() {
+        filteredMenuFoodName.clear()
+        filteredMenuItemPrice.clear()
+        filteredMenuImage.clear()
+
+        filteredMenuFoodName.addAll(originalMenuFoodName)
+        filteredMenuItemPrice.addAll(originalMenuItemPrice)
+        filteredMenuImage.addAll(originalMenuImage)
+
+        adapter.notifyDataSetChanged()
     }
 
     private fun setupSearchView() {
         binding.searchView.setOnQueryTextListener(object :SearchView.OnQueryTextListener{
-            override fun onQueryTextSubmit(query: String?): Boolean {
+            override fun onQueryTextSubmit(query: String): Boolean {
                 filterMenuItems(query)
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                filterMenuItems(newText)
+                return true
             }
         })
     }
 
-    private fun filterMenuItems(query: String?) {
+    private fun filterMenuItems(query: String) {
         filteredMenuFoodName.clear()
         filteredMenuItemPrice.clear()
         filteredMenuImage.clear()
@@ -76,8 +94,10 @@ class SearchFragment : Fragment() {
             if(foodName.contains(query,ignoreCase = true)){
                 filteredMenuFoodName.add(foodName)
                 filteredMenuItemPrice.add(originalMenuItemPrice[index])
+                filteredMenuImage.add(originalMenuImage[index])
             }
         }
+        adapter.notifyDataSetChanged()
     }
 
     companion object {

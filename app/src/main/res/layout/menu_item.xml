@@ -68,7 +68,7 @@
                 android:background="@drawable/addtocart"
                 android:fontFamily="@font/lato_bold"
                 android:gravity="center"
-                android:text="Add To Cart"
+                android:text="Them mon"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="@+id/menuPrice"
                 app:layout_constraintHorizontal_bias="0.454"

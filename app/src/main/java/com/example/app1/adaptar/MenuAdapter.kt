@@ -6,8 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.app1.databinding.MenuItemBinding
 
 class MenuAdapter(private val menuItemsName:MutableList<String>,
-                  private val menuItemPrice: List<Int>,
-                  private val MenuImage: List<String>
+                  private val menuItemPrice: MutableList<String>,
+                  private val MenuImage: MutableList<Int>
 ): RecyclerView.Adapter<MenuAdapter.MenuViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuViewHolder {
