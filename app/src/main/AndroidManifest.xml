@@ -32,7 +32,9 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true" >
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan">
+            <!--  kiem soat giao dien khi ban phim ao suat hien          -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
