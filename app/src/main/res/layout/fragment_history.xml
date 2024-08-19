@@ -74,6 +74,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/buyAgainFoodName" />
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/orderStatus"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_marginEnd="32dp"
