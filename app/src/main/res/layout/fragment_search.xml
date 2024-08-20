@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/yeonsung"
-        android:text="Tim Kiem"
+        android:text="Tìm kiếm"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"

@@ -66,6 +66,7 @@ class HomeFragment : Fragment() {
         val adapter = PopularAdapter(foodName,Price,populerFoodImages)
             binding.PopulerRecyclerView.layoutManager = LinearLayoutManager(requireContext())
             binding.PopulerRecyclerView.adapter = adapter
+
     }
 
     companion object {

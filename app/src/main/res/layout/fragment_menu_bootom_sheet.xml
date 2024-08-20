@@ -27,7 +27,7 @@
         android:textColor="@color/black"
         android:fontFamily="@font/yeonsung"
         android:textSize="24dp"
-        android:text="Gio hang" />
+        android:text="Giỏ hàng" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/menuRecyclerView"

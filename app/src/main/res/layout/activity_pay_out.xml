@@ -4,19 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     android:layout_height="match_parent"
     tools:context=".PayOutActivity">
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
-    <Button
+
+    <ImageButton
         android:id="@+id/button8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
-        android:text="Button"
+        android:background="@android:color/transparent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/arrow_circle_left"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,6 +30,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/yeonsung"
         android:text="Edit"
+        android:layout_marginTop="16dp"
         android:layout_gravity="center"
         android:textColor="@color/textcolor"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,11 +52,11 @@
 
         <TextView
 
-            android:layout_width="30dp"
+            android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:paddingLeft="8dp"
-            android:text="TextView" />
+            android:text="Ten" />
 
         <EditText
 
@@ -60,8 +65,48 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:ems="10"
+            android:fontFamily="@font/lato_regular"
             android:inputType="text"
-            android:text="Name" />
+            android:text="lorem ipsum" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/profileedittextshape"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView25">
+
+        <TextView
+
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingLeft="8dp"
+            android:text="Dia chi" />
+
+        <EditText
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:ems="10"
+            android:fontFamily="@font/lato_regular"
+            android:inputType="textMultiLine"
+            android:text="NamLorem ipsum is placeholder text
+commonly used in the graphic,
+print, and publishing industries
+for previewing layouts and visual " />
     </LinearLayout>
 
     <LinearLayout
@@ -79,11 +124,11 @@
 
         <TextView
 
-            android:layout_width="30dp"
+            android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:paddingLeft="8dp"
-            android:text="TextView" />
+            android:text="Phone" />
 
         <EditText
 
@@ -92,8 +137,9 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:ems="10"
+            android:fontFamily="@font/lato_regular"
             android:inputType="text"
-            android:text="Name" />
+            android:text="123456789" />
     </LinearLayout>
 
     <LinearLayout
@@ -111,53 +157,20 @@
 
         <TextView
 
-            android:layout_width="30dp"
+            android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:paddingLeft="8dp"
-            android:text="TextView" />
+            android:text="Thanh toan"
+            android:textColor="@color/textcolor" />
 
-        <EditText
-
-            android:layout_width="wrap_content"
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:ems="10"
-            android:inputType="text"
-            android:text="Name" />
-    </LinearLayout>
+            app:srcCompat="@drawable/cashondelivery" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/profileedittextshape"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView25">
-
-        <TextView
-
-            android:layout_width="30dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:paddingLeft="8dp"
-            android:text="TextView" />
-
-        <EditText
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:ems="10"
-            android:inputType="text"
-            android:text="Name" />
     </LinearLayout>
 
     <LinearLayout
@@ -176,11 +189,12 @@
 
         <TextView
 
-            android:layout_width="30dp"
+            android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:paddingLeft="8dp"
-            android:text="TextView" />
+            android:text="Tong tien"
+            android:textColor="@color/textcolor" />
 
         <EditText
 
@@ -189,12 +203,18 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:ems="10"
-            android:inputType="text"
-            android:text="Name" />
+            android:fontFamily="@font/lato_regular"
+            android:gravity="end"
+            android:inputType="none"
+            android:paddingEnd="32dp"
+            android:text="5$"
+            android:textColor="@color/textcolor"
+            android:textSize="20sp" />
     </LinearLayout>
 </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/PlaceMyOrder"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:background="@drawable/edittextshape"
@@ -202,7 +222,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_gravity="bottom"
-        android:text="noi dat hang"
+        android:text="Nơi đặt hàng"
         android:textColor="@color/textcolor"
         android:textAllCaps="false"
         android:fontFamily="@font/yeonsung"/>

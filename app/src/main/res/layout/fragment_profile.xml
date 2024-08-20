@@ -30,7 +30,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/yeonsung"
-                android:text="Ten"
+                android:text="Tên"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 
@@ -64,7 +64,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/yeonsung"
-                android:text="Dia chi"
+                android:text="Địa chỉ"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 
@@ -138,7 +138,7 @@ for previewing layouts and visual" />
                 android:layout_marginLeft="8dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/yeonsung"
-                android:text="So dien thoai"
+                android:text="Số điện thoại"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 

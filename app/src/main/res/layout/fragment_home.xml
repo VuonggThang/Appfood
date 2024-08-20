@@ -46,7 +46,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/lato_bold"
-        android:text="Popular"
+        android:text="Phổ biến"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"

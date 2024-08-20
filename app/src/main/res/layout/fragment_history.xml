@@ -16,7 +16,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/yeonsung"
-            android:text="Don hang hien tai"
+            android:text="Đơn hàng hiện tại"
             android:textColor="@color/black"
             android:textSize="16dp"
             app:layout_constraintEnd_toEndOf="parent"
