@@ -11,147 +11,148 @@
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:layout_height="wrap_content">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="57dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginRight="10dp"
-        android:background="@drawable/profileedittextshape"
-        android:elevation="2dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
 
-        <TextView
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="57dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/profileedittextshape"
+            android:elevation="2dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-            android:layout_width="56dp"
+            <TextView
+
+                android:layout_width="56dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/yeonsung"
+                android:text="Ten"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <EditText
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:ems="10"
+                android:fontFamily="@font/lato_regular"
+                android:inputType="text"
+                android:text="Admin" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/yeonsung"
-            android:text="Ten"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/profileedittextshape"
+            android:elevation="2dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-        <EditText
+            <TextView
 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:ems="10"
-            android:fontFamily="@font/lato_regular"
-            android:inputType="text"
-            android:text="Admin" />
-    </LinearLayout>
+                android:layout_width="56dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/yeonsung"
+                android:text="Dia chi"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginRight="10dp"
-        android:background="@drawable/profileedittextshape"
-        android:elevation="2dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
+            <EditText
 
-        <TextView
-
-            android:layout_width="56dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/yeonsung"
-            android:text="Dia chi"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
-
-        <EditText
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:ems="10"
-            android:fontFamily="@font/lato_regular"
-            android:inputType="textMultiLine"
-            android:text="Lorem ipsum is placeholder text
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:ems="10"
+                android:fontFamily="@font/lato_regular"
+                android:inputType="textMultiLine"
+                android:text="Lorem ipsum is placeholder text
 commonly used in the graphic,
 print, and publishing industries
 for previewing layouts and visual" />
-    </LinearLayout>
+        </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="57dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginRight="10dp"
-        android:background="@drawable/profileedittextshape"
-        android:elevation="2dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="57dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/profileedittextshape"
+            android:elevation="2dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-        <TextView
+            <TextView
 
-            android:layout_width="56dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/yeonsung"
-            android:text="Email"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
+                android:layout_width="56dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/yeonsung"
+                android:text="Email"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
-        <EditText
+            <EditText
 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:ems="10"
-            android:fontFamily="@font/lato_regular"
-            android:inputType="textEmailAddress"
-            android:text="Admin123@gmail.com" />
-    </LinearLayout>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:ems="10"
+                android:fontFamily="@font/lato_regular"
+                android:inputType="textEmailAddress"
+                android:text="Admin123@gmail.com" />
+        </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/profileedittextshape"
-        android:elevation="2dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/profileedittextshape"
+            android:elevation="2dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-        <TextView
+            <TextView
 
-            android:layout_width="56dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/yeonsung"
-            android:text="So dien thoai"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
+                android:layout_width="56dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/yeonsung"
+                android:text="So dien thoai"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
-        <EditText
+            <EditText
 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:ems="10"
-            android:fontFamily="@font/lato_regular"
-            android:inputType="phone"
-            android:text="12345678" />
-    </LinearLayout>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:ems="10"
+                android:fontFamily="@font/lato_regular"
+                android:inputType="phone"
+                android:text="12345678" />
+        </LinearLayout>
 
 </LinearLayout>
 
