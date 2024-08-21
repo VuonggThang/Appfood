@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="Home"
+    <item android:title="Trang chủ"
         android:icon="@drawable/icon_home_active"
         android:id="@+id/homeFragment"/>
-    <item android:title="Cart"
+    <item android:title="Giỏ hàng"
         android:icon="@drawable/shopping_cart"
         android:id="@+id/cartFragment"/>
-    <item android:title="Search"
+    <item android:title="Tìm kiếm"
         android:icon="@drawable/search_refraction"
         android:id="@+id/searchFragment"/>
-    <item android:title="History"
+    <item android:title="Lịch sử"
         android:icon="@drawable/icon_list"
         android:id="@+id/historyFragment"/>
-    <item android:title="Profile"
+    <item android:title="Hồ sơ"
         android:icon="@drawable/user"
         android:id="@+id/profileFragment"/>
 </menu>

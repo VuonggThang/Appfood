@@ -22,7 +22,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:fontFamily="@font/yeonsung"
-        android:text="Chon mon an yeu thich"
+        android:text="Chọn món ăn yêu thích"
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
