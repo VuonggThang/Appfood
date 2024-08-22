@@ -55,8 +55,11 @@
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/yeonsung"
             android:paddingLeft="8dp"
-            android:text="Ten" />
+            android:text="Tên"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
 
         <EditText
 
@@ -89,8 +92,11 @@
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/yeonsung"
             android:paddingLeft="8dp"
-            android:text="Dia chi" />
+            android:text="Đia chỉ"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
 
         <EditText
 
@@ -127,8 +133,11 @@ for previewing layouts and visual " />
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/yeonsung"
             android:paddingLeft="8dp"
-            android:text="Phone" />
+            android:text="Số điện thoại"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
 
         <EditText
 
@@ -160,9 +169,11 @@ for previewing layouts and visual " />
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/lato_bold"
             android:paddingLeft="8dp"
-            android:text="Thanh toan"
-            android:textColor="@color/textcolor" />
+            android:text="Thanh toán"
+            android:textColor="@color/textcolor"
+            android:textSize="16sp" />
 
         <ImageView
             android:id="@+id/imageView6"
@@ -192,9 +203,11 @@ for previewing layouts and visual " />
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/lato_bold"
             android:paddingLeft="8dp"
-            android:text="Tong tien"
-            android:textColor="@color/textcolor" />
+            android:text="Tổng tiền"
+            android:textColor="@color/textcolor"
+            android:textSize="16sp" />
 
         <EditText
 
