@@ -20,13 +20,20 @@
             android:exported="false" />
         <activity
             android:name=".ChooseLocationActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".SignActivity"
-            android:exported="false" />
+            android:exported="true" >
+        </activity>
         <activity
             android:name=".LoginActivity"
-            android:exported="false" />
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".StartActivity"
             android:exported="false" />
@@ -39,11 +46,7 @@
             android:windowSoftInputMode="adjustPan">
 
             <!-- kiem soat giao dien khi ban phim ao suat hien -->
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
