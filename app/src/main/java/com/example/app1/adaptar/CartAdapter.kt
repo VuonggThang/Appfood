@@ -22,7 +22,8 @@ class CartAdapter (
     private val cartItemPrices: MutableList<String>,
     private val cartImages: MutableList<String>,
     private val cartDescriptions:MutableList<String>,
-    private val cartQuantity:MutableList<Int>
+    private val cartQuantity:MutableList<Int>,
+    private val cartIngredient:MutableList<String>
 ) : RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
     //instance Firebase
     private val auth = FirebaseAuth.getInstance()
@@ -55,6 +56,7 @@ class CartAdapter (
                 val quantity = itemQuantities[position]
                 cartFoodName.text = cartItems[position]
                 cartItemPrice.text = cartItemPrices[position]
+
 
                 //load image using glide
                 val uriString = cartImages[position]
@@ -105,6 +107,7 @@ class CartAdapter (
                     cartDescriptions.removeAt(position)
                     cartQuantity.removeAt(position)
                     cartItemPrices.removeAt(position)
+                    cartIngredient.removeAt(position)
                     Toast.makeText(context,"Xoa Item",Toast.LENGTH_SHORT).show()
 
                     // update itemQuantities
