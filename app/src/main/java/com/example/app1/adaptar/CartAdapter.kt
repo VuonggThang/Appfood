@@ -1,12 +1,18 @@
 package com.example.app1.adaptar
 
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.Target
 import com.example.app1.databinding.CartItemBinding
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
@@ -20,8 +26,8 @@ class CartAdapter (
     private val context:Context,
     private val cartItems: MutableList<String>,
     private val cartItemPrices: MutableList<String>,
-    private val cartImages: MutableList<String>,
     private val cartDescriptions:MutableList<String>,
+    private val cartImages: MutableList<String>,
     private val cartQuantity:MutableList<Int>,
     private val cartIngredient:MutableList<String>
 ) : RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
@@ -48,6 +54,13 @@ class CartAdapter (
     }
 
     override fun getItemCount(): Int = cartItems.size
+    //get update quantities
+
+    fun getUpdatedItemsQuantities(): MutableList<Int> {
+        val itemQuantity = mutableListOf<Int>()
+        itemQuantity.addAll(cartQuantity)
+        return itemQuantity
+    }
 
     inner class CartViewHolder(private val binding: CartItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -56,8 +69,6 @@ class CartAdapter (
                 val quantity = itemQuantities[position]
                 cartFoodName.text = cartItems[position]
                 cartItemPrice.text = cartItemPrices[position]
-
-
                 //load image using glide
                 val uriString = cartImages[position]
                 val uri = Uri.parse(uriString)
@@ -77,7 +88,6 @@ class CartAdapter (
                 }
             }
         }
-
         private fun increaseQuantity(position: Int) {
             if (itemQuantities[position] < 10) {
                 itemQuantities[position]++
@@ -133,7 +143,6 @@ class CartAdapter (
                     }
                     onComplete(uniqueKey)
                 }
-
                 override fun onCancelled(error: DatabaseError) {
                     TODO("Not yet implemented")
                 }

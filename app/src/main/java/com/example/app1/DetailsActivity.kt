@@ -54,7 +54,7 @@ class DetailsActivity : AppCompatActivity() {
         // create a cartItems object
         val cartItem = CartItems(foodName.toString(),foodPrice.toString(),foodDescription.toString(),foodImage.toString(),1)
         //save data to cart item to firebase database
-        database.child("user").child(userId).child("CatItems").push().setValue(cartItem).addOnSuccessListener {
+        database.child("user").child(userId).child("CartItems").push().setValue(cartItem).addOnSuccessListener {
             Toast.makeText(this,"them items vao gio hang thang cong", Toast.LENGTH_SHORT).show()
         }.addOnFailureListener {
             Toast.makeText(this, "Item khong duoc them vao gio hang",Toast.LENGTH_SHORT).show()

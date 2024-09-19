@@ -29,7 +29,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/yeonsung"
-        android:text="Edit"
+        android:text="Sửa"
+        android:textSize="30dp"
         android:layout_marginTop="16dp"
         android:layout_gravity="center"
         android:textColor="@color/textcolor"
@@ -63,6 +64,7 @@
 
         <EditText
 
+            android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -100,6 +102,7 @@
 
         <EditText
 
+            android:id="@+id/address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -141,6 +144,7 @@ for previewing layouts and visual " />
 
         <EditText
 
+            android:id="@+id/phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -211,6 +215,7 @@ for previewing layouts and visual " />
 
         <EditText
 
+            android:id="@+id/totalAmount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
