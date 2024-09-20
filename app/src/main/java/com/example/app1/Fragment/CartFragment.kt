@@ -50,13 +50,9 @@ class CartFragment : Fragment() {
 
         auth = FirebaseAuth.getInstance()
         reteriveCartItems()
-
-
         binding.proceedButton.setOnClickListener{
             // get order items details before proceeding to check out
             getOrderItemsDetail()
-            val intent = Intent(requireActivity(),PayOutActivity::class.java)
-            startActivity(intent)
         }
         return binding.root
     }
@@ -146,9 +142,9 @@ class CartFragment : Fragment() {
             }
 
             private fun setAdapter() {
-                val adapter = CartAdapter(requireContext(),foodNames,foodPrices,foodDescriptions,foodImagesUri,quantity,foodIngredients)
+                cartAdapter = CartAdapter(requireContext(),foodNames,foodPrices,foodDescriptions,foodImagesUri,quantity,foodIngredients)
                 binding.cartRecyclerView.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
-                binding.cartRecyclerView.adapter = adapter
+                binding.cartRecyclerView.adapter = cartAdapter
             }
 
             override fun onCancelled(error: DatabaseError) {

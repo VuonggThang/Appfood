@@ -36,14 +36,14 @@
 
             <EditText
 
+                android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:ems="10"
                 android:fontFamily="@font/lato_regular"
-                android:inputType="text"
-                android:text="Admin" />
+                android:inputType="text" />
         </LinearLayout>
 
         <LinearLayout
@@ -70,6 +70,7 @@
 
             <EditText
 
+                android:id="@+id/address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -78,11 +79,7 @@
                 android:background="@android:color/transparent"
                 android:ems="10"
                 android:fontFamily="@font/lato_regular"
-                android:inputType="textMultiLine"
-                android:text="Lorem ipsum is placeholder text
-commonly used in the graphic,
-print, and publishing industries
-for previewing layouts and visual" />
+                android:inputType="textMultiLine" />
         </LinearLayout>
 
         <LinearLayout
@@ -109,14 +106,14 @@ for previewing layouts and visual" />
 
             <EditText
 
+                android:id="@+id/email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:ems="10"
                 android:fontFamily="@font/lato_regular"
-                android:inputType="textEmailAddress"
-                android:text="Admin123@gmail.com" />
+                android:inputType="textEmailAddress" />
         </LinearLayout>
 
         <LinearLayout
@@ -144,20 +141,20 @@ for previewing layouts and visual" />
 
             <EditText
 
+                android:id="@+id/phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:ems="10"
                 android:fontFamily="@font/lato_regular"
-                android:inputType="phone"
-                android:text="12345678" />
+                android:inputType="phone" />
         </LinearLayout>
 
 </LinearLayout>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button7"
+            android:id="@+id/saveinfoButton"
             android:elevation="5dp"
             android:layout_marginBottom="32dp"
             android:textAllCaps="false"

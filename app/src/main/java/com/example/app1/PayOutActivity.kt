@@ -37,10 +37,39 @@ class PayOutActivity : AppCompatActivity() {
         databaseReference = FirebaseDatabase.getInstance().getReference()
         //setUserData
         setUserData()
+
+        // get user details form Firebase
+        foodItemName = intent.getStringArrayListExtra("FoodItemName") as ArrayList<String>
+        foodItemPrice = intent.getStringArrayListExtra("FoodItemPrice") as ArrayList<String>
+        foodItemImage = intent.getStringArrayListExtra("FoodItemImage") as ArrayList<String>
+        foodItemDescription = intent.getStringArrayListExtra("FoodItemDescription") as ArrayList<String>
+        foodItemIngredient = intent.getStringArrayListExtra("FoodItemIngredient") as ArrayList<String>
+        foodItemQuantities = intent.getIntegerArrayListExtra("FoodItemQuantities") as ArrayList<Int>
+
+        totalAmount = calculateTotalAmount().toString() + "$"
+        //binding.totalAmount.isEnabled = false
+        binding.totalAmount.setText(totalAmount)
+
         binding.PlaceMyOrder.setOnClickListener{
             val bottomSheetDialog = CongratsBottomSheet()
             bottomSheetDialog.show(supportFragmentManager,"Test")
         }
+    }
+
+    private fun calculateTotalAmount(): Int {
+        var totalAmount = 0
+        for (i in 0 until foodItemPrice.size){
+            var price = foodItemPrice[i]
+            val lastChar = price.last()
+            val priceIntVale = if(lastChar == '$'){
+                price.dropLast(1).toInt()
+            }else{
+                price.toInt()
+            }
+            var quantity = foodItemQuantities[1]
+            totalAmount += priceIntVale*quantity
+        }
+        return totalAmount
     }
 
     private fun setUserData() {
