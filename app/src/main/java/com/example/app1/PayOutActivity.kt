@@ -3,7 +3,9 @@ package com.example.app1
 import android.location.Address
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.example.app1.databinding.ActivityPayOutBinding
+import com.example.app1.model.OrderDetails
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -50,10 +52,51 @@ class PayOutActivity : AppCompatActivity() {
         //binding.totalAmount.isEnabled = false
         binding.totalAmount.setText(totalAmount)
 
+        binding.backButton.setOnClickListener {
+            finish()
+        }
         binding.PlaceMyOrder.setOnClickListener{
+            name = binding.name.text.toString().trim()
+            address = binding.address.text.toString().trim()
+            phone = binding.phone.text.toString().trim()
+            if(name.isBlank()&& address.isBlank() && phone.isBlank()){
+                Toast.makeText(this,"Nhap day du thong tin",Toast.LENGTH_SHORT).show()
+            }else{
+                placeOrder()
+            }
+
+        }
+    }
+
+    private fun placeOrder() {
+        userId = auth.currentUser?.uid?:""
+
+        val time = System.currentTimeMillis()
+        val itemPushKey = databaseReference.child("OrderDetails").push().key
+        val orderDetails = OrderDetails(userId,name,foodItemName,foodItemPrice,foodItemImage,foodItemQuantities,address,totalAmount,phone,time,itemPushKey,false,false)
+        val orderReference = databaseReference.child("OrderDetails").child(itemPushKey!!)
+        orderReference.setValue(orderDetails).addOnSuccessListener {
             val bottomSheetDialog = CongratsBottomSheet()
             bottomSheetDialog.show(supportFragmentManager,"Test")
+            removeItemFromCart()
+            addOrderHistory(orderDetails)
         }
+            .addOnFailureListener {
+                Toast.makeText(this,"Dat hang that bai",Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    private fun addOrderHistory(orderDetails: OrderDetails) {
+        databaseReference.child("user").child(userId).child("BuyHistory")
+            .child(orderDetails.itemPushKey!!)
+            .setValue(orderDetails).addOnSuccessListener {
+
+            }
+    }
+
+    private fun removeItemFromCart() {
+        val cartItemsReference = databaseReference.child("user").child(userId).child("CartItems")
+        cartItemsReference.removeValue()
     }
 
     private fun calculateTotalAmount(): Int {
@@ -66,8 +109,8 @@ class PayOutActivity : AppCompatActivity() {
             }else{
                 price.toInt()
             }
-            var quantity = foodItemQuantities[1]
-            totalAmount += priceIntVale*quantity
+            var quantity = foodItemQuantities[i]
+            totalAmount +=priceIntVale*quantity
         }
         return totalAmount
     }

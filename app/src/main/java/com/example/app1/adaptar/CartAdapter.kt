@@ -91,12 +91,14 @@ class CartAdapter (
         private fun increaseQuantity(position: Int) {
             if (itemQuantities[position] < 10) {
                 itemQuantities[position]++
+                cartQuantity[position] = itemQuantities[position]
                 binding.catItemQuantity.text = itemQuantities[position].toString()
             }
         }
         private fun deceaseQuantity(position: Int) {
             if (itemQuantities[position] > 1) {
                 itemQuantities[position]--
+                cartQuantity[position] = itemQuantities[position]
                 binding.catItemQuantity.text = itemQuantities[position].toString()
             }
         }
