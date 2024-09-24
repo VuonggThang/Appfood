@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/white"
-    android:layout_height="wrap_content">
-
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
         android:layout_height="87dp"
@@ -36,7 +34,7 @@
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
-                android:id="@+id/foodNamePopular"
+                android:id="@+id/foodName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -44,15 +42,15 @@
                 android:text="Food Name"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="@+id/foodImage"
+                app:layout_constraintBottom_toTopOf="@+id/textView30"
                 app:layout_constraintStart_toEndOf="@+id/foodImage"
-                app:layout_constraintTop_toTopOf="@+id/foodImage" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/PricePopular"
+                android:id="@+id/foodPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="32dp"
                 android:layout_marginEnd="50dp"
                 android:fontFamily="@font/lato_bold"
                 android:text="$5"
@@ -62,19 +60,32 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/addToCartPopular"
-                android:layout_width="80dp"
-                android:layout_height="20dp"
+                android:id="@+id/textView30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:background="@drawable/addtocart"
+                android:fontFamily="@font/lato_regular"
+                android:text="Quantity"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/foodName"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/foodImage"
+                app:layout_constraintTop_toBottomOf="@+id/foodName" />
+
+            <TextView
+                android:id="@+id/foodQuantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="5"
                 android:fontFamily="@font/lato_bold"
-                android:gravity="center"
-                android:text="Thêm món"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="@+id/PricePopular"
-                app:layout_constraintHorizontal_bias="0.454"
-                app:layout_constraintStart_toStartOf="@+id/PricePopular"
-                app:layout_constraintTop_toBottomOf="@+id/PricePopular" />
+                android:textSize="16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView30"
+                app:layout_constraintStart_toEndOf="@+id/textView30"
+                app:layout_constraintTop_toTopOf="@+id/textView30" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
