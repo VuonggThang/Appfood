@@ -1,8 +1,10 @@
 package com.example.app1.Fragment
 
 import android.content.Intent
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -51,14 +53,21 @@ class HistoryFragment : Fragment() {
         binding.recentbuyitem.setOnClickListener{
             seeItemsRecentBuy()
         }
+        binding.receivedButton.setOnClickListener {
+            updateOrderStatus()
+        }
         return binding.root
+    }
+
+    private fun updateOrderStatus() {
+        val itemPushKey = listOfOrderItem[0].itemPushKey
+        val completeOrderReference = database.reference.child("CompletedOrder").child(itemPushKey!!)
+        completeOrderReference.child("paymentReceived").setValue(true)
     }
 
     private fun seeItemsRecentBuy() {
         listOfOrderItem.firstOrNull()?.let {
             val intent = Intent(requireContext(), RecentOrderItems::class.java)
-//            val bundle = Bundle()
-//            bundle.putParcelableArrayList("RecentBuyOrderItem", ArrayList(listOfOrderItem))
             intent.putExtra("RecentBuyOrderItem",ArrayList(listOfOrderItem))
             startActivity(intent)
         }
@@ -81,6 +90,8 @@ class HistoryFragment : Fragment() {
                 if (listOfOrderItem.isNotEmpty()){
                     //display the most recent order details
                     setDataInRecentBuyItem()
+
+
                     //setup to recyclerview with previous order details
                     setPreviousBuyItemsRecyclerView()
                 }
@@ -104,8 +115,12 @@ class HistoryFragment : Fragment() {
                 val image = it.foodImages?.firstOrNull()?:""
                 val uri = Uri.parse(image)
                 Glide.with(requireContext()).load(uri).into(buyAgainFoodImage)
-                listOfOrderItem.reverse()
-                if (listOfOrderItem.isNotEmpty()){
+
+                val isOrderIsAccepted = listOfOrderItem[0].orderAccepted
+                Log.d("TAG","setDataInRecentBuyItem : $isOrderIsAccepted")
+                if(isOrderIsAccepted){
+                    orderStatus.background.setTint(Color.GREEN)
+                    receivedButton.visibility = View.VISIBLE
                 }
             }
         }

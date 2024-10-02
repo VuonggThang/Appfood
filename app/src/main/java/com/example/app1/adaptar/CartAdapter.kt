@@ -36,8 +36,8 @@ class CartAdapter (
     init {
         val database = FirebaseDatabase.getInstance()
         val userId = auth.currentUser?.uid?:""
-        val cartItmeNumber = cartItems.size
-        itemQuantities = IntArray(cartItmeNumber){1}
+        val cartTimeNumber = cartItems.size
+        itemQuantities = IntArray(cartTimeNumber){1}
         cartItemsReference = database.reference.child("user").child(userId).child("CartItems")
     }
     companion object{
