@@ -17,8 +17,11 @@ class OrderDetails():Serializable {
     var phoneNumber :String?=null
     var orderAccepted :Boolean=false
     var paymentReceived :Boolean=false
+    var isCancelled: Boolean = false
+    var reason: String? = null  // Thuộc tính mới cho lý do hủy
     var itemPushKey: String? = null
     var currentTime: Long = 0
+
 
     constructor(parcel: Parcel) : this() {
         userUid = parcel.readString()
@@ -28,6 +31,8 @@ class OrderDetails():Serializable {
         phoneNumber = parcel.readString()
         orderAccepted = parcel.readByte() != 0.toByte()
         paymentReceived = parcel.readByte() != 0.toByte()
+        isCancelled = parcel.readByte() != 0.toByte()
+        reason = parcel.readString()  // Đọc giá trị lý do hủy từ Parcel
         itemPushKey = parcel.readString()
         currentTime =parcel.readLong()
     }
@@ -45,7 +50,10 @@ class OrderDetails():Serializable {
         time: Long,
         itemPushKey: String?,
         b: Boolean,
-        b1: Boolean
+        b1: Boolean,
+        cancelled: Boolean, // Tham số mới cho isCancelled
+        reason: String? // Tham số mới cho lý do hủy
+
     ) :this(){
         this.userUid = userId
         this.userName = name
@@ -60,6 +68,9 @@ class OrderDetails():Serializable {
         this.itemPushKey = itemPushKey
         this.orderAccepted = orderAccepted
         this.paymentReceived = paymentReceived
+        this.isCancelled = cancelled // Gán giá trị cho isCancelled
+        this.reason = reason // Gán giá trị cho lý do hủy
+
     }
 
       fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -70,6 +81,8 @@ class OrderDetails():Serializable {
         parcel.writeString(phoneNumber)
         parcel.writeByte(if (orderAccepted) 1 else 0)
         parcel.writeByte(if (paymentReceived) 1 else 0)
+        parcel.writeByte(if (isCancelled) 1 else 0) // Ghi giá trị isCancelled vào Parcel
+        parcel.writeString(reason)  // Ghi lý do hủy vào Parcel
         parcel.writeString(itemPushKey)
         parcel.writeLong(currentTime)
     }

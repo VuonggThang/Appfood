@@ -2,6 +2,7 @@ package com.example.app1.Fragment
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.app1.CongratsBottomSheet
 import com.example.app1.PayOutActivity
 import com.example.app1.R
+import com.example.app1.adaptar.BuyAgainAdapter
 import com.example.app1.adaptar.CartAdapter
 import com.example.app1.databinding.FragmentCartBinding
 import com.example.app1.model.CartItems
@@ -47,11 +49,12 @@ class CartFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentCartBinding.inflate(inflater,container,false)
-
         auth = FirebaseAuth.getInstance()
+        database = FirebaseDatabase.getInstance()
         reteriveCartItems()
         binding.proceedButton.setOnClickListener{
             // get order items details before proceeding to check out
+            Log.d("CartFragment", "Proceed button clicked")
             getOrderItemsDetail()
         }
         return binding.root

@@ -11,9 +11,15 @@ import com.example.app1.databinding.BuyAgainItemBinding
 class BuyAgainAdapter(  private val buyAgainFoodName:MutableList<String>,
                         private val buyAgainFoodPrice:MutableList<String>,
                         private val buyAgainFoodImage:MutableList<String>,
-                        private var requireContext: Context) :
+                        private var requireContext: Context,
+                        private val onOrderAgainListener: OnOrderAgainListener,
+                        ) :
                         RecyclerView.Adapter<BuyAgainAdapter.BuyAgainViewHolder>() {
 
+    // Tạo interface để xử lý sự kiện đặt hàng lại
+    interface OnOrderAgainListener {
+        fun onOrderAgain(foodName: String, foodPrice: String,foodImage: String)
+    }
     override fun onBindViewHolder(holder: BuyAgainViewHolder, position: Int) {
         holder.bind(buyAgainFoodName[position],buyAgainFoodPrice[position],buyAgainFoodImage[position])
     }
@@ -30,7 +36,13 @@ class BuyAgainAdapter(  private val buyAgainFoodName:MutableList<String>,
             val uriString = foodImage
             val uri = Uri.parse(uriString)
             Glide.with(requireContext).load(uri).into(binding.buyAgainFoodImage)
+
+            //buy again
+            binding.buyAgainFoodButton.setOnClickListener {
+                onOrderAgainListener.onOrderAgain(foodName, foodPrice, foodImage) // Gọi listener khi nút được nhấn
+            }
+
+
         }
     }
-
 }

@@ -66,7 +66,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
-        android:text="Design By\nNeatRoots"
+        android:text="Thiết kế \nbởi Thắng"
         android:textAlignment="center"
         android:textColor="@color/textcolor"
         app:layout_constraintBottom_toBottomOf="parent"

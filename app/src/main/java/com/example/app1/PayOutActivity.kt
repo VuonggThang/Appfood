@@ -28,6 +28,7 @@ class PayOutActivity : AppCompatActivity() {
     private lateinit var foodItemQuantities : ArrayList<Int>
     private lateinit var databaseReference: DatabaseReference
     private lateinit var userId:String
+    private lateinit var reason:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,8 +60,8 @@ class PayOutActivity : AppCompatActivity() {
             name = binding.name.text.toString().trim()
             address = binding.address.text.toString().trim()
             phone = binding.phone.text.toString().trim()
-            if(name.isBlank()&& address.isBlank() && phone.isBlank()){
-                Toast.makeText(this,"Nhap day du thong tin",Toast.LENGTH_SHORT).show()
+            if(name.isBlank()|| address.isBlank() || phone.isBlank()){
+                Toast.makeText(this,"Nhập đầy đủ thông tin ",Toast.LENGTH_SHORT).show()
             }else{
                 placeOrder()
             }
@@ -73,7 +74,8 @@ class PayOutActivity : AppCompatActivity() {
 
         val time = System.currentTimeMillis()
         val itemPushKey = databaseReference.child("OrderDetails").push().key
-        val orderDetails = OrderDetails(userId,name,foodItemName,foodItemPrice,foodItemImage,foodItemQuantities,address,phone,totalAmount,time,itemPushKey,false,false)
+        reason = ""
+        val orderDetails = OrderDetails(userId,name,foodItemName,foodItemPrice,foodItemImage,foodItemQuantities,address,phone,totalAmount,time,itemPushKey,false,false,false, reason)
         val orderReference = databaseReference.child("OrderDetails").child(itemPushKey!!)
         orderReference.setValue(orderDetails).addOnSuccessListener {
             val bottomSheetDialog = CongratsBottomSheet()
@@ -82,7 +84,7 @@ class PayOutActivity : AppCompatActivity() {
             addOrderHistory(orderDetails)
         }
             .addOnFailureListener {
-                Toast.makeText(this,"Dat hang that bai",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"Đặt hàng thất bại",Toast.LENGTH_SHORT).show()
             }
     }
 

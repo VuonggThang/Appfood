@@ -13,12 +13,8 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class CongratsBottomSheet : BottomSheetDialogFragment() {
     private lateinit var binding:FragmentCongratsBottomSheetBinding
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
     }
 
     override fun onCreateView(

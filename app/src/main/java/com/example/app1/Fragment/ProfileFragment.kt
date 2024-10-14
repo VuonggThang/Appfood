@@ -1,11 +1,14 @@
 package com.example.app1.Fragment
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.example.app1.LoginActivity
 import com.example.app1.databinding.FragmentProfileBinding
 import com.example.app1.model.UserModel
 import com.google.firebase.auth.FirebaseAuth
@@ -35,12 +38,14 @@ class ProfileFragment : Fragment() {
             email.isEnabled = false
             address.isEnabled = false
             phone.isEnabled = false
+            password.isEnabled = false
             binding.editButton.setOnClickListener {
 
                 name.isEnabled = !name.isEnabled
                 email.isEnabled = !email.isEnabled
                 address.isEnabled = !address.isEnabled
                 phone.isEnabled = !phone.isEnabled
+                password.isEnabled = !password.isEnabled
             }
         }
         binding.saveinfoButton.setOnClickListener{
@@ -48,15 +53,24 @@ class ProfileFragment : Fragment() {
             val email = binding.email.text.toString()
             val address = binding.address.text.toString()
             val phone = binding.phone.text.toString()
-            //val name = binding.name.text.toString()
-            updateUserData(name,email,address,phone)
+            val password = binding.password.text.toString()
+            updateUserData(name,email,address,phone,password)
 
         }
+
+        binding.logoutButton.setOnClickListener {
+            auth.signOut()
+            Log.d("Logout", "onData:Logout")
+            val intent = Intent(requireContext(), LoginActivity::class.java)
+            startActivity(intent)
+            requireActivity().finish() // Đóng activity hiện tại sau khi chuyển sang LoginActivity
+        }
+
         return binding.root
 
     }
 
-    private fun updateUserData(name: String, email: String, address: String, phone: String) {
+    private fun updateUserData(name: String, email: String, address: String, phone: String, password:String) {
         val userId = auth.currentUser?.uid
         if (userId!= null){
             val userReference = database.getReference("user").child(userId)
@@ -64,7 +78,8 @@ class ProfileFragment : Fragment() {
                 "name" to name,
                 "address" to address,
                 "email" to email,
-                "phone" to phone
+                "phone" to phone,
+                "password" to password
             )
             userReference.setValue(userData).addOnSuccessListener {
                 Toast.makeText(requireContext(), "hồ sơ lưu thành công", Toast.LENGTH_SHORT).show()
@@ -87,6 +102,7 @@ class ProfileFragment : Fragment() {
                             binding.address.setText(userProfile.address)
                             binding.email.setText(userProfile.email)
                             binding.phone.setText(userProfile.phone)
+                            binding.password.setText(userProfile.password)
 
                         }
                     }

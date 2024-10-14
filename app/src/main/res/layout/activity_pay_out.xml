@@ -20,7 +20,7 @@
         android:layout_marginTop="32dp"
         android:background="@android:color/transparent"
         android:scaleType="centerCrop"
-        android:src="@drawable/arrow_circle_left"
+        android:src="@drawable/arrow_left"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,12 +28,12 @@
         android:id="@+id/textView25"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/yeonsung"
-        android:text="Sửa"
-        android:textSize="30dp"
-        android:layout_marginTop="16dp"
         android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/yeonsung"
+        android:text="Thông tin đặt hàng"
         android:textColor="@color/textcolor"
+        android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/backButton" />
@@ -228,14 +228,14 @@
         android:id="@+id/PlaceMyOrder"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:background="@drawable/edittextshape"
-        android:layout_marginBottom="32dp"
+        android:layout_gravity="bottom"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_gravity="bottom"
-        android:text="Nơi đặt hàng"
-        android:textColor="@color/textcolor"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/edittextshape"
+        android:fontFamily="@font/yeonsung"
+        android:text="Đặt hàng"
         android:textAllCaps="false"
-        android:fontFamily="@font/yeonsung"/>
+        android:textColor="@color/textcolor" />
 
 </FrameLayout>

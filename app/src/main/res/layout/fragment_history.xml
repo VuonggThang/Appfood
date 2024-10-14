@@ -75,18 +75,17 @@
                     app:layout_constraintStart_toStartOf="@+id/buyAgainFoodName"
                     app:layout_constraintTop_toBottomOf="@+id/buyAgainFoodName" />
 
-                <androidx.cardview.widget.CardView
+
+                <ImageView
                     android:id="@+id/orderStatus"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginTop="8dp"
-                    android:layout_marginEnd="64dp"
-                    app:cardBackgroundColor="#CAD8CA"
-                    app:cardCornerRadius="20dp"
+                    android:layout_marginEnd="50dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toTopOf="parent" /><!-- Thêm mô tả cho Accessibility -->
 
-                </androidx.cardview.widget.CardView>
+
 
                 <Button
                     android:id="@+id/receivedButton"
@@ -95,7 +94,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     android:backgroundTint="@color/textcolor"
-                    android:text="da nhan"
+                    android:text="Thanh toán"
                     android:visibility="invisible"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/orderStatus"
@@ -112,7 +111,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/yeonsung"
-            android:text="Đơn hàng trước"
+            android:text="Món ăn gần đây"
             android:textColor="@color/black"
             android:textSize="16dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -130,6 +129,22 @@
             app:layout_constraintTop_toBottomOf="@+id/textView27"
             app:layout_constraintVertical_bias="0.0"
             tools:listitem="@layout/buy_again_item" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/cancelButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/proceedbutonshape"
+            android:elevation="10dp"
+            android:fontFamily="@font/yeonsung"
+            android:text="Huỷ"
+            android:textColor="#F60202"
+            app:circularflow_radiusInDP="5dp"
+            app:layout_constraintBottom_toTopOf="@+id/BuyAgainRecyclerView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

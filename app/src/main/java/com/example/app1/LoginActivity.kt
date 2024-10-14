@@ -13,15 +13,18 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.firebase.Firebase
+
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
-import com.google.firebase.auth.auth
+import com.google.firebase.auth.ktx.auth
+
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.database
-import java.lang.ref.Reference
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.messaging.FirebaseMessaging
+
 
 class LoginActivity : AppCompatActivity() {
     private  var userName: String ?= null
@@ -44,25 +47,25 @@ class LoginActivity : AppCompatActivity() {
             .requestEmail()
             .build()
         // initialize Firebase Auth
-        auth = Firebase.auth
+        //auth = Firebase.auth
+        auth = FirebaseAuth.getInstance()
         // initialize Firebase database
-        database = Firebase.database.reference
+        //database = Firebase.database.reference
+        database = FirebaseDatabase.getInstance().reference
         // initialize of google
         googleSignInClient = GoogleSignIn.getClient(this,googleSignInOptions)
 
         //login with email and password
-
         binding.loginButton.setOnClickListener {
             // get data from text field
-
             email = binding.emailAddress.text.toString().trim()
             password = binding.password.text.toString().trim()
             if(email.isBlank()||password.isBlank()){
-                Toast.makeText(this,"Nhap thong tin chi tiet",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"Nhập thông tin chi tiết",Toast.LENGTH_SHORT).show()
             }else{
-                createUser()
-                Toast.makeText(this,"Login Thang cong",Toast.LENGTH_SHORT).show()
-
+                loginUser(email, password)
+                //createUser()
+                //Toast.makeText(this,"Đăng nhập thành công",Toast.LENGTH_SHORT).show()
             }
         }
         binding.donthaveaccount.setOnClickListener {
@@ -91,6 +94,7 @@ class LoginActivity : AppCompatActivity() {
                             //successfully sign in with google
 //                            Toast.makeText(this,"Đăng nhập thành công với google",Toast.LENGTH_SHORT).show()
 //                            updateUi(authTask.result?.user)
+                            saveFcmTokenToFirebase()
                             startActivity(Intent(this,MainActivity::class.java))
                             finish()
                         }else{
@@ -105,34 +109,65 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
-    private fun createUser() {
-        auth.signInWithEmailAndPassword(email,password).addOnCompleteListener { task->
-            if(task.isSuccessful){
-                val user = auth.currentUser
-                updateUi(user)
-            }else{
-                auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener { task ->
-                    if (task.isSuccessful){
-                        saveUserdata()
-                        val user = auth.currentUser
-                        updateUi(user)
-                    }else{
-                        Toast.makeText(this,"Login That bai",Toast.LENGTH_SHORT).show()
-                    }
-                }
+    private fun saveFcmTokenToFirebase() {
+        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val token = task.result
+                Log.d("FCM Token", "Token: $token")
+
+                // Lưu token vào Firebase Database dưới userId
+                val userId = FirebaseAuth.getInstance().currentUser!!.uid
+                database.child("user").child(userId).child("fcmToken").setValue(token)
+            } else {
+                Log.e("FCM Token", "Failed to get FCM token", task.exception)
             }
         }
     }
 
-    private fun saveUserdata() {
-        // get data from text field
-        email = binding.emailAddress.text.toString().trim()
-        password = binding.password.text.toString().trim()
-        val user = UserModel(userName,email,password)
-        val userId = FirebaseAuth.getInstance().currentUser!!.uid
-        //save data
-        database.child("user").child(userId).setValue(user)
+//    private fun createUser() {
+//        auth.signInWithEmailAndPassword(email,password).addOnCompleteListener { task->
+//            if(task.isSuccessful){
+//                val user = auth.currentUser
+//                saveFcmTokenToFirebase()
+//                updateUi(user)
+//            }else{
+//                auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener { task ->
+//                    if (task.isSuccessful){
+//                        saveUserdata()
+//                        val user = auth.currentUser
+//                        saveFcmTokenToFirebase()
+//                        updateUi(user)
+//                    }else{
+//                        Toast.makeText(this,"Đăng nhập thất bại",Toast.LENGTH_SHORT).show()
+//                    }
+//                }
+//            }
+//        }
+//    }
+
+    private fun loginUser(email: String, password: String) {
+        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val user = auth.currentUser
+                saveFcmTokenToFirebase()
+                updateUi(user)
+            } else {
+                Toast.makeText(this, "Tài khoản không tồn tại, vui lòng đăng ký", Toast.LENGTH_SHORT).show()
+                // Chuyển đến màn hình đăng ký nếu không có tài khoản
+                val intent = Intent(this, SignActivity::class.java)
+                startActivity(intent)
+            }
+        }
     }
+//    private fun saveUserdata() {
+//        // get data from text field
+//        email = binding.emailAddress.text.toString().trim()
+//        password = binding.password.text.toString().trim()
+//        val user = UserModel(userName,email,password)
+//        val userId = FirebaseAuth.getInstance().currentUser!!.uid
+//        //save data
+//        database.child("user").child(userId).setValue(user)
+//    }
     override fun onStart(){
         super.onStart()
         val currentUser =auth.currentUser
